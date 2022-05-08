@@ -1,0 +1,16 @@
+version: '3'
+services:
+  bit-server:
+    build:
+      context: https://github.com/teambit/bit.git
+      dockerfile: scripts/docker-teambit-bit/Dockerfile-bit-server
+      args:
+        SCOPE_PATH: /root/bit-demo
+    restart: unless-stopped
+    volumes:
+      - demo_workspace:/root/bit-demo
+    ports:
+      - 5000:3000
+
+volumes:
+  demo_workspace:
